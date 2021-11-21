@@ -81,12 +81,14 @@ img {
 }
 
 .page {
-	padding-top: 24px;
-	padding-bottom: 25px;
+	/* padding-top: 24px;
+	padding-bottom: 25px; */
 	border-bottom: 1px solid #ececec;
 }
 
 .logo {
+	padding-top: 24px;
+	padding-bottom: 25px;
 	display: inline-block;
 	margin-right: 93px;
 	color: var(--primery-text-color);
@@ -102,14 +104,16 @@ img {
 .studio {
 	margin-left: -3px;
 }
+.site-nav-list .item {
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
 
 .site-nav-list .item:not(:last-child) {
 	margin-right: 50px;
 }
 
 .site-nav .link {
-	padding-top: 32px;
-	padding-bottom: 32px;
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 1.14;
@@ -122,11 +126,28 @@ img {
 	color: var(--accent-color);
 }
 
-.site-nav .link.current {
+.current {
 	color: var(--accent-color);
 }
 
+.site-nav-list .item {
+	position: relative;
+}
+
+.current::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 4px;
+	background-color: var(--accent-color);
+	border-radius: 2px;
+}
+
 .contacts-link {
+	padding-top: 32px;
+	padding-bottom: 32px;
 	display: flex;
 	align-items: center;
 	color: var(--secondary-text-color);
@@ -290,22 +311,17 @@ img {
 }
 
 .work .item::before {
-	content: "";
-	display: inline-block;
+	content: "Десктопные приложения";
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 370px;
+	width: 100%;
 	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-color: rgba(47, 48, 58, 0.8);
-}
-
-.work-title {
-	position: absolute;
-	bottom: 27px;
-	left: 83px;
 	color: var(--third-text-color);
-
 	font-weight: 700;
 	font-size: 14px;
 	line-height: 1.14;
