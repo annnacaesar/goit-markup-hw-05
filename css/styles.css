@@ -330,6 +330,14 @@ img {
 	text-transform: uppercase;
 }
 
+.work .item:nth-child(2):before {
+	content: "Мобильные приложения";
+}
+
+.work .item:nth-child(3):before {
+	content: "Дизайнерские решения";
+}
+
 /* #endregion */
 
 /* #region ----------------TEAM---------------- */
