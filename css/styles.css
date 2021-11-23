@@ -7,6 +7,8 @@
 	--secondary-background-color: #f5f4fa;
 	--third-background-color: #2f303a;
 	--icon-color: #afb1b8;
+	--transition-duration: 250ms;
+	--timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -73,7 +75,7 @@ img {
 	padding-bottom: 94px;
 }
 
-/* #region ----------------HEADER---------------- */
+/* #region =============HEADER============= */
 
 .show {
 	display: flex;
@@ -120,9 +122,7 @@ img {
 	letter-spacing: 0.02em;
 	color: var(--primery-text-color);
 
-	transition-property: color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function);
 }
 
 .site-nav .link:hover,
@@ -160,9 +160,8 @@ img {
 	line-height: 1.14;
 	letter-spacing: 0.02em;
 
-	transition-property: color, fill;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function),
+		fill var(--transition-duration) var(--timing-function);
 }
 
 .contacts-header {
@@ -191,7 +190,7 @@ img {
 
 /* #endregion */
 
-/* #region ----------------HERO---------------- */
+/* #region =============HERO============= */
 
 .overlay {
 	max-width: 1600px;
@@ -242,9 +241,7 @@ img {
 	text-align: center;
 	letter-spacing: 0.06em;
 
-	transition-property: background-color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: background-color var(--transition-duration) var(--timing-function);
 }
 
 .button-hero:hover,
@@ -254,7 +251,7 @@ img {
 
 /* #endregion */
 
-/* #region ----------------SKILLS---------------- */
+/* #region =============SKILLS============= */
 
 .section-skills {
 	padding-top: 94px;
@@ -299,7 +296,7 @@ img {
 }
 /* #endregion */
 
-/* #region ----------------WORK---------------- */
+/* #region =============WORK============= */
 
 .section.secondary {
 	background-color: var(--secondary-background-color);
@@ -351,7 +348,7 @@ img {
 
 /* #endregion */
 
-/* #region ----------------TEAM---------------- */
+/* #region =============TEAM============= */
 
 .team .item {
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -406,9 +403,8 @@ img {
 	justify-content: center;
 	color: #afb1b8;
 
-	transition-property: color, background-color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function),
+		background-color var(--transition-duration) var(--timing-function);
 }
 
 .team-social-icon {
@@ -424,7 +420,7 @@ img {
 }
 /* #endregion */
 
-/* #region ----------------CLIENTS---------------- */
+/* #region =============CLIENTS============= */
 
 .clients-list {
 	display: flex;
@@ -449,9 +445,8 @@ img {
 	justify-content: center;
 	color: var(--icon-color);
 
-	transition-property: color, border-color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function),
+		border-color var(--transition-duration) var(--timing-function);
 }
 
 .clients-icon {
@@ -468,7 +463,7 @@ img {
 
 /* #endregion */
 
-/* #region ----------------PROJECTS---------------- */
+/* #region =============PROJECTS============= */
 
 .button-list {
 	justify-content: center;
@@ -486,9 +481,9 @@ img {
 	line-height: 1.62;
 	text-align: center;
 
-	transition-property: color, background-color, box-shadow;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function),
+		background-color var(--transition-duration) var(--timing-function),
+		box-shadow var(--transition-duration) var(--timing-function);
 }
 
 .button-list .item:not(:last-child) {
@@ -522,9 +517,7 @@ img {
 .projects-link {
 	display: block;
 
-	transition-property: box-shadow;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: box-shadow var(--transition-duration) var(--timing-function);
 }
 
 .projects-link:hover,
@@ -534,9 +527,7 @@ img {
 
 .projects-thumb {
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	overflow: hidden;
 }
 
 .projects-overlay-text {
@@ -550,27 +541,32 @@ img {
 	color: var(--third-text-color);
 	opacity: 0;
 
-	/* top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%); */
+	transform: translateY(100%);
+	transition: transform var(--transition-duration) var(--timing-function);
 }
 
-.projects-thumb::before {
-	display: inline-block;
-	content: "";
+.projects-overlay {
 	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	opacity: 0;
 
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background: rgba(33, 150, 243, 0.9);
+
+	transform: translateY(100%);
+	transition: transform var(--transition-duration) var(--timing-function);
 }
 
 .projects-link:hover .projects-overlay-text,
 .projects-link:focus .projects-overlay-text,
-.projects-link:hover .projects-thumb::before,
-.projects-link:focus .projects-thumb::before {
+.projects-link:hover .projects-overlay,
+.projects-link:focus .projects-overlay {
 	opacity: 1;
+	transform: translateY(0);
 }
 
 /* .projects-link {
@@ -630,7 +626,7 @@ img {
 
 /* #endregion */
 
-/* #region ----------------FOOTER---------------- */
+/* #region =============FOOTER============= */
 
 .footer-container {
 	display: flex;
@@ -655,12 +651,26 @@ img {
 	font-style: normal;
 	font-size: 14px;
 	line-height: 1.71;
+
+	transition: color var(--transition-duration) var(--timing-function);
+}
+
+.address .link:focus,
+.address .link:hover {
+	color: var(--accent-color);
 }
 
 .contacts.secondary .link {
 	color: rgba(255, 255, 255, 0.6);
 	font-size: 14px;
 	line-height: 1.71;
+
+	transition: color var(--transition-duration) var(--timing-function);
+}
+
+.contacts.secondary .link:hover,
+.contacts.secondary .link:focus {
+	color: var(--accent-color);
 }
 
 .contacts.secondary {
@@ -708,9 +718,8 @@ img {
 	justify-content: center;
 	color: #afb1b8;
 
-	transition-property: color, background-color;
-	transition-duration: 250ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color var(--transition-duration) var(--timing-function),
+		background-color var(--transition-duration) var(--timing-function);
 }
 
 .footer-social-icon {
